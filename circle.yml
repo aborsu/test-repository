@@ -1,5 +1,12 @@
-## Customize test commands
+dependencies:
+  pre:
+    # update locally with:
+    # openssl aes-256-cbc -e -in secret-env-plain -out secret-env-cipher -k $KEY
+    - echo TEST_VAR2=poney >> ~/.circlerc
 test:
   override:
     - export TEST_VAR=poney; echo $TEST_VAR
-    - echo $TEST_VAR
+    - if [ -z $TEST_VAR ]; then echo BAD; else echo GOOD; fi
+    - if [ -z $TEST_VAR2 ]; then echo BAD; else echo GOOD; fi
+    - echo TEST_VAR
+    - echo TEST_VAR2
