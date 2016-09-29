@@ -1,5 +1,5 @@
 ## Customize test commands
 test:
   override:
-    - export TEST_VAR=poney
+    - export TEST_VAR=poney; echo $TEST_VAR
     - echo $TEST_VAR
